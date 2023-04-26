@@ -15,7 +15,6 @@ export class Sender {
 
   private OnOpne(e: WS.Event) {
     Log('连接开启');
-    sender.sendMessage('hello!!!')
   }
 
   public sendMessage(message: any) {
@@ -24,3 +23,6 @@ export class Sender {
 }
 
 let sender = new Sender();
+setTimeout(() => {
+  sender.sendMessage('hello!!!');
+}, 1000);

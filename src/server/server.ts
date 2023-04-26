@@ -11,12 +11,12 @@ export class Server {
 
   constructor() {
     this._ws = new WS.Server({ port: serverConst.PORT });
-    this._ws.on('connection', this.OnConnection);
+    this._ws.on('connection', this.OnConnection.bind(this));
   }
 
   private OnConnection(ws: WS.Server) {
     console.log('sever connected!')
-    this._ws.on('message', this.OnMessage);
+    ws.on('message', this.OnMessage);
   }
 
   private OnMessage(message) {

@@ -13,7 +13,6 @@ class Sender {
     }
     OnOpne(e) {
         (0, Log_1.Log)('连接开启');
-        sender.sendMessage('hello!!!');
     }
     sendMessage(message) {
         this._ws.send(message);
@@ -21,3 +20,6 @@ class Sender {
 }
 exports.Sender = Sender;
 let sender = new Sender();
+setTimeout(() => {
+    sender.sendMessage('hello!!!');
+}, 1000);
