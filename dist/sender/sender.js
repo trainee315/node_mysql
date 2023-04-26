@@ -1,25 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sender = void 0;
-const Log_1 = require("../Log/Log");
 const senderConfig_1 = require("./senderConfig");
 const WS = require("ws");
 class Sender {
     constructor() {
         Sender.instance = this;
-        this._ws = new WS.WebSocket(senderConfig_1.senderConfig.Host);
-        (0, Log_1.Log)('连接初始化成功');
-        this._ws.onopen = this.OnOpne;
     }
-    OnOpne(e) {
-        (0, Log_1.Log)('连接开启');
+    Connect() {
+        this._ws = new WS.WebSocket(senderConfig_1.senderConfig.Host);
+        return new Promise(((resolve, reject) => {
+            this._ws.onopen = function (e) {
+                resolve(0);
+            };
+        }).bind(this));
     }
     sendMessage(message) {
         this._ws.send(message);
     }
 }
 exports.Sender = Sender;
-let sender = new Sender();
-setTimeout(() => {
-    sender.sendMessage('hello!!!');
-}, 1000);

@@ -8,6 +8,14 @@ export class index {
 
   constructor() {
     this._server = new Server();
+    this._sender = new Sender();
+
+    this.Connect();
+  }
+
+  private async Connect() {
+    await this._sender.Connect();
+    this._sender.sendMessage(123456);
   }
 }
 

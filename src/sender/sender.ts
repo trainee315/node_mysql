@@ -8,21 +8,19 @@ export class Sender {
 
   constructor() {
     Sender.instance = this;
-    this._ws = new WS.WebSocket(senderConfig.Host);
-    Log('连接初始化成功')
-    this._ws.onopen = this.OnOpne;
   }
 
-  private OnOpne(e: WS.Event) {
-    Log('连接开启');
+  Connect() {
+    this._ws = new WS.WebSocket(senderConfig.Host);
+    return new Promise(((resolve, reject) => {
+      this._ws.onopen = function (e:WS.Event) {
+        resolve(0);
+      }
+    }).bind(this));
+
   }
 
   public sendMessage(message: any) {
     this._ws.send(message);
   }
 }
-
-let sender = new Sender();
-setTimeout(() => {
-  sender.sendMessage('hello!!!');
-}, 1000);
