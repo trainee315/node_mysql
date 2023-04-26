@@ -7,14 +7,13 @@ const Log_1 = require("../Log/Log");
 class Server {
     constructor() {
         this._ws = new WS.Server({ port: serverConst_1.serverConst.PORT });
-        this._ws.on('message', this.OnConnection);
+        this._ws.on('connection', this.OnConnection);
     }
     OnConnection(ws) {
-        (0, Log_1.Log)('client connected');
+        console.log('sever connected!');
         this._ws.on('message', this.OnMessage);
     }
     OnMessage(message) {
-        debugger;
         (0, Log_1.Log)(message);
     }
 }

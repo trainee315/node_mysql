@@ -11,16 +11,15 @@ export class Server {
 
   constructor() {
     this._ws = new WS.Server({ port: serverConst.PORT });
-    this._ws.on('message', this.OnConnection);
+    this._ws.on('connection', this.OnConnection);
   }
 
   private OnConnection(ws: WS.Server) {
-    Log('client connected');
+    console.log('sever connected!')
     this._ws.on('message', this.OnMessage);
   }
 
   private OnMessage(message) {
-    debugger;
     Log(message);
   }
 }
