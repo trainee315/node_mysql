@@ -12,13 +12,15 @@ export class Sender {
     Log('连接初始化成功')
     this._ws.onopen = this.OnOpne;
   }
-  
+
   private OnOpne(e: WS.Event) {
-    Log('连接开启')
-    Log(e);
+    Log('连接开启');
+    sender.sendMessage('hello!!!')
   }
-  
+
   public sendMessage(message: any) {
     this._ws.send(message);
   }
 }
+
+let sender = new Sender();

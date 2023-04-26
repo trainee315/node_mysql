@@ -14,6 +14,7 @@ class Server {
         this._ws.on('message', this.OnMessage);
     }
     OnMessage(message) {
+        debugger;
         (0, Log_1.Log)(message);
     }
 }

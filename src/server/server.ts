@@ -20,6 +20,7 @@ export class Server {
   }
 
   private OnMessage(message) {
+    debugger;
     Log(message);
   }
 }

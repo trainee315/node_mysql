@@ -13,10 +13,11 @@ class Sender {
     }
     OnOpne(e) {
         (0, Log_1.Log)('连接开启');
-        (0, Log_1.Log)(e);
+        sender.sendMessage('hello!!!');
     }
     sendMessage(message) {
         this._ws.send(message);
     }
 }
 exports.Sender = Sender;
+let sender = new Sender();
